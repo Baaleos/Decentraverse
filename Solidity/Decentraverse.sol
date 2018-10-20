@@ -26,8 +26,10 @@ contract Decentraverse is ERC721 {
     
     
     
-    function createCelestialObject(address to) public {
-       require(Owner == msg.sender);
+    function createCelestialObject(address to) payable  public  {
+       //require(Owner == msg.sender && );
+	   require(msg.value >= 100000000000000000 wei);
+	   Owner.transfer(msg.value);
        uint id = CelestialObjects.length;
        string memory hash = CelestialGenerator(theGeneratorAddress).generateCelestialObject();
        CelestialObjects.push(CelestialObject(hash));

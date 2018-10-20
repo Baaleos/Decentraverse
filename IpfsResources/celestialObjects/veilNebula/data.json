@@ -1,0 +1,11 @@
+  {
+    "Name": "Veil Nebula",
+    "Type": "Nebula",
+    "Description": "The Veil Nebula is a diffuse nebula located in the northern constellation Cygnus, the Swan. It constitutes the visible parts of the Cygnus Loop, a supernova remnant in Cygnus.",
+    "Image","",
+    "Stats": {
+      "Distance from Earth (ly)": "1470",
+      "Apparent Magnitude": "7.0",
+      "Radius (ly)": "50"
+    }
+  }

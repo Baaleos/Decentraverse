@@ -1,0 +1,11 @@
+  {
+    "Name": "Pismis 24-1",
+    "Type": "Cluster",
+    "Description": "Pismis 24-1 was once thought to be the most massive star known, but is composed of at least three individual objects, each still among the most luminous and most massive stars known.",
+    "Image","",
+    "Stats": {
+      "Distance from Earth (ly)": "6,500",
+      "Apparent Magnitude": "11.1",
+      "Radius (km)": "12,522,600"
+    }
+  }

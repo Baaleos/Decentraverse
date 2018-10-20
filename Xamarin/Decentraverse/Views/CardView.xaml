@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns:control="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Decentraverse.Views.CardView">
+    <ContentPage.Content>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+           <control:CarouselView ItemsSource="{Binding Cards, Mode=TwoWay}">
+               <control:CarouselView.ItemTemplate>
+                   <DataTemplate>
+                        <Label Text="{Binding Name}" />
+                        <Image Source="{Binding ImageURL}" />
+                   </DataTemplate>
+               </control:CarouselView.ItemTemplate>
+           </control:CarouselView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

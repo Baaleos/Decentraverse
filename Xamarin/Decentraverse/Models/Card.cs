@@ -44,5 +44,12 @@ namespace Decentraverse.Models
                 stats = new List<Statistic>();
             Stats = new List<Statistic>(stats);
         }
+
+        public Card(int tokenId)
+        {
+
+        }
+
+        
     }
 }

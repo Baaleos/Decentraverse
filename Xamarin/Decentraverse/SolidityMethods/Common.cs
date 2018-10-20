@@ -101,6 +101,20 @@ namespace Decentraverse.SolidityMethods
             return listToReturn;
         }
 
+        public static string CardTokenIdToHash(int tokenId, string privateKey)
+        {
+            
+            var contract = GetContract(privateKey);
+            var account = new Nethereum.Web3.Accounts.Account(privateKey);
+            var celestialObjs = contract.GetFunction("CelestialObjects");
+            var res =
+                celestialObjs.CallAsync<string>(tokenId).Result;
+            return res;
+
+        }
+
+
+
         public class TransferEvent
         {
             [Parameter("address", "from", 1, true)]

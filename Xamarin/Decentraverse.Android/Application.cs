@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Reflection;
 using Android.App;
 using Android.Runtime;
@@ -8,6 +9,7 @@ using Caliburn.Micro;
 namespace Decentraverse.Droid
 {
     [Application]
+    [DebuggerStepThrough]
     public class Application : CaliburnApplication
     {
         private SimpleContainer container;
@@ -37,7 +39,7 @@ namespace Decentraverse.Droid
             return new[]
             {
                 GetType().Assembly,
-                typeof (Decentraverse.ViewModels.CardViewModel).Assembly
+                typeof (Decentraverse.ViewModels.CardCarouselViewModel).Assembly
             };
         }
 

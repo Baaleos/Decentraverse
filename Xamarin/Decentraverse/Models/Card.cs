@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace Decentraverse.Models
 {
@@ -15,17 +16,17 @@ namespace Decentraverse.Models
             /// <summary>
             /// Tier 2
             /// </summary>
-            TIER_2 = 1,
+            COMMON = 1,
 
             /// <summary>
             /// Tier 3
             /// </summary>
-            TIER_3 = 2,
+            HEAVENLY = 2,
 
             /// <summary>
             /// Tier 4
             /// </summary>
-            HEAVENLY = 3
+            SINGULAR = 3
         }
 
         public string ImageURL { get; protected set; }

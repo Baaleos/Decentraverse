@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Diagnostics;
 using Caliburn.Micro;
 using Foundation;
 using UIKit;
@@ -11,6 +9,7 @@ namespace Decentraverse.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
+    [DebuggerStepThrough]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
         private readonly CaliburnAppDelegate appDelegate = new CaliburnAppDelegate();
@@ -25,7 +24,7 @@ namespace Decentraverse.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(IoC.Get<App>());
+            LoadApplication(IoC.Get<Decentraverse.App>());
 
             return base.FinishedLaunching(app, options);
         }

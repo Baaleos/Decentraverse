@@ -13,13 +13,31 @@
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
     <PackageReference Include="Caliburn.Micro.Xamarin.Forms" Version="3.2.0" />
     <PackageReference Include="Nethereum.Web3" Version="2.5.1" />
+    <PackageReference Include="Xamarin.Forms.CarouselView" Version="2.3.0-pre2" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\AboutViewModel.cs" />
     <Compile Remove="ViewModels\BaseViewModel.cs" />
+    <Compile Remove="Contracts\Item.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
     <Folder Include="ViewModels\" />
+    <Folder Include="Images\" />
+    <Folder Include="Effects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Images\Common.png" />
+    <None Remove="Images\Heavenly.png" />
+    <None Remove="Images\Singular.png" />
+    <None Remove="Images\Universal.png" />
+    <None Remove="Effects\starfield.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Common.png" />
+    <EmbeddedResource Include="Images\Heavenly.png" />
+    <EmbeddedResource Include="Images\Singular.png" />
+    <EmbeddedResource Include="Images\Universal.png" />
+    <EmbeddedResource Include="Effects\starfield.html" />
   </ItemGroup>
 </Project>

@@ -17,10 +17,10 @@ namespace Decentraverse
         {
             Initialize();
             this.container = container;
-            container.PerRequest<CardViewModel>();
+            container.PerRequest<CardCarouselViewModel>();
             container.Instance<ICardRepository>(new InMemoryCardRepository());
 
-            DisplayRootView<CardView>();
+            DisplayRootView<CardCarouselView>();
         }
 
         protected override void PrepareViewFirst(NavigationPage navigationPage)

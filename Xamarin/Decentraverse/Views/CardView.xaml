@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns:control="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Decentraverse.Views.CardView">
-    <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-           <control:CarouselView ItemsSource="{Binding Cards, Mode=TwoWay}">
-               <control:CarouselView.ItemTemplate>
-                   <DataTemplate>
-                        <Label Text="{Binding Name}" />
-                        <Image Source="{Binding ImageURL}" />
-                   </DataTemplate>
-               </control:CarouselView.ItemTemplate>
-           </control:CarouselView>
-        </Grid>
-    </ContentPage.Content>
-</ContentPage>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Decentraverse.Views.CardView" BackgroundColor="Transparent">
+    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Image x:Name="Background" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"/>
+        <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+            <Label Margin="20" x:Name="Name" Text="{Binding Card.Name}" HorizontalOptions="StartAndExpand" FontSize="Large">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="paltn.ttf#Palatino-Roman"/>
+                        <On Platform="iOS" Value="Palatino-Roman" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <Image Source="{Binding Card.ImageURL}"></Image>
+            <Label x:Name="Fact" Text="{Binding Card.Fact}" Margin="20" FontAttributes="Italic" FontSize="Small"></Label>
+        </StackLayout>
+    </AbsoluteLayout>
+</ContentView>

@@ -1,0 +1,10 @@
+  {
+    "Name": "Mercury",
+    "Type": "Planet",
+    "Description": "Mercury is the smallest and innermost planet in the Solar System. Its orbital period around the Sun of 87.97 days is the shortest of all the planets in the Solar System. It is named after the Roman deity Mercury, the messenger of the gods.",
+    "Stats": {
+      "Distance from Earth (ly)": "8.165e-6",
+      "Apparent Magnitude": "2.385",
+      "Radius (km)": "2,439"
+    }
+  }

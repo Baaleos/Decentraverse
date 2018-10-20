@@ -1,0 +1,10 @@
+  {
+    "Name": "Venus",
+    "Type": "Planet",
+    "Description": "Venus is the second brightest natural object in the sky. Venus is sometimes referred to as the “morning star” and “evening star”. One day on Venus is longer than one year. Venus is named after the Roman goddess of love and beauty.",
+    "Stats": {
+      "Distance from Earth (ly)": "2.759e-5",
+      "Apparent Magnitude": "-3.95",
+      "Radius (km)": "6,051"
+    }
+  }

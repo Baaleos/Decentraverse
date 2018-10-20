@@ -18,7 +18,7 @@ namespace Decentraverse
             Initialize();
             this.container = container;
             container.PerRequest<CardCarouselViewModel>();
-            container.Instance<ICardRepository>(new InMemoryCardRepository());
+            container.Instance<ICardRepository>(new EthereumCardRepository());
 
             DisplayRootView<CardCarouselView>();
         }

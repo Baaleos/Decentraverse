@@ -1,0 +1,12 @@
+  {
+    "Name": "HD 209458b",
+    "Type": "Planet",
+    "Description": "Planet HD 209458b is evaporating. It is so close to its parent star that its heated atmosphere is simply expanding away into space. Some astronomers studying this distant planetary system now believe they have detected water vapor among the gases being liberated.",
+    "Image":"QmPiFgedZjPquoLCiaVcmbPZTkqgGSQeNztH5uEEm1fjEg",
+    "Rarity":"2",
+    "Stats": {
+      "Distance from Earth (ly)": "159",
+      "Apparent Magnitude": "7.65",
+      "Radius (km)": "793,098"
+    }
+  }

@@ -2,7 +2,8 @@
     "Name": "Black Hole in NGC 1600",
     "Type": "Black Hole",
     "Description": "This computer-simulated image shows a supermassive black hole at the core of a galaxy. The black region in the center represents the black hole's event horizon, where no light can escape the massive object's gravitational grip.",
-    "Image","QmVbFXcH3K3Uh3ChXNef2My9tX9cP1uuL6JJADYkeuo3yE",	
+    "Image":"QmVbFXcH3K3Uh3ChXNef2My9tX9cP1uuL6JJADYkeuo3yE",	
+    "Rarity":"3",
     "Stats": {
       "Distance from Earth (ly)": "149,300,000",
       "Apparent Magnitude": "Infinite",

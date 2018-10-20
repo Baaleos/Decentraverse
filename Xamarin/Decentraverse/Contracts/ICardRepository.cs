@@ -8,5 +8,8 @@ namespace Decentraverse.Contracts
     {
         Card GetCard(string hash);
         IEnumerable<Card> GetMyCards();
+
+
+        IEnumerable<int> GetCardTokenIds();
     }
 }

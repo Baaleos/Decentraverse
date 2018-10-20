@@ -2,7 +2,8 @@
     "Name": "Messier 96",
     "Type": "Galaxy",
     "Description": "Messier 96 (M96) is an intermediate spiral galaxy located in the constellation Leo. It is a double-barred spiral galaxy with a small inner bulge through the central region along with an outer bulge. ",
-    "Image","QmRt4d3jP5dcS3shHxKKXgKnJA9Q2KynB1tCf17P5AbzBX",
+    "Image":"QmRt4d3jP5dcS3shHxKKXgKnJA9Q2KynB1tCf17P5AbzBX",
+    "Rarity":"2",
     "Stats": {
       "Distance from Earth (ly)": "31 million",
       "Apparent Magnitude": "10.1",

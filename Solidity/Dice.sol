@@ -34,6 +34,10 @@ contract Dice {
     function d10000() public returns (uint){
         return random(1,10000);
     }
+    function dCustom(uint low, uint high) public returns (uint){
+        return random(low,high);
+    }
+    
     uint nonce = 0;
     
     

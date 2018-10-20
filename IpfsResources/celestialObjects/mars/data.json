@@ -2,8 +2,8 @@
     "Name": "Mars",
     "Type": "Planet",
     "Description": "Named after the Roman god of war, Mars is also often described as the Red Planet due to its reddish appearance. Mars is a terrestrial planet with a thin atmosphere composed primarily of carbon dioxide.",
-    "Image","QmSfLw6KcTwXv6GQjCwWAm8j8PMpgqWAyM6tryZ5s9dCKd",
-    "Rarity","1",
+    "Image":"QmSfLw6KcTwXv6GQjCwWAm8j8PMpgqWAyM6tryZ5s9dCKd",
+    "Rarity":"1",
     "Stats": {
       "Distance from Earth (ly)": "5.77e-6",
       "Apparent Magnitude": "-2.3",

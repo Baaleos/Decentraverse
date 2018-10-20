@@ -2,8 +2,8 @@
     "Name": "Sun",
     "Type": "Star",
     "Description": "The Sun is a star found at the center of the Solar System. It makes up around 99.86% of the Solar System's mass. Around 74% of the Sun's mass is made up of hydrogen.",
-    "Image","QmYNL7rUJWcAXy1Ho6EuGvPFgr7dyn3X4a1QHQT2w5XWvy",
-    "Rarity","2",
+    "Image":"QmYNL7rUJWcAXy1Ho6EuGvPFgr7dyn3X4a1QHQT2w5XWvy",
+    "Rarity":"2",
     "Stats": {
       "Distance from Earth (ly)": "1.58e-5",
       "Apparent Magnitude": "-26.74",

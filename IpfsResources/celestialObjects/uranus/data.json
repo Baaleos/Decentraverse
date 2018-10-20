@@ -2,8 +2,8 @@
     "Name": "Uranus",
     "Type": "Planet",
     "Description": "Uranus is the seventh planet from the Sun. While being visible to the naked eye, it was not recognised as a planet due to its dimness and slow orbit.",
-    "Image","QmUHnWQAEZA258tZ5dWsyyJFPyzMQjAvnfAGigQ3XTfJWU",
-    "Rarity","1",
+    "Image":"QmUHnWQAEZA258tZ5dWsyyJFPyzMQjAvnfAGigQ3XTfJWU",
+    "Rarity":"1",
     "Stats": {
       "Distance from Earth (ly)": "0.00026",
       "Apparent Magnitude": "5.7",

@@ -1,0 +1,10 @@
+  {
+    "Name": "The Moon",
+    "Type": "Natural Satellite",
+    "Description": "The Moon is an astronomical body that orbits planet Earth and is Earth's only permanent natural satellite. It is the fifth-largest natural satellite in the Solar System, and the largest among planetary satellites relative to the size of the planet that it orbits.",
+    "Stats": {
+      "Distance from Earth (km)": "384,400",
+      "Apparent Magnitude": "-12.6",
+      "Radius (km)": "1,737"
+    }
+  }

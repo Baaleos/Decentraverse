@@ -1,0 +1,10 @@
+  {
+    "Name": "Jupiter",
+    "Type": "Planet",
+    "Description": "Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a giant planet with a mass one-thousandth that of the Sun, but two-and-a-half times that of all the other planets in the Solar System combined.",
+    "Stats": {
+      "Distance from Earth (ly)": "6.21e-5",
+      "Apparent Magnitude": "-2.3",
+      "Radius (km)": "69,911"
+    }
+  }

@@ -1,0 +1,10 @@
+  {
+    "Name": "Carina Nebula",
+    "Type": "Nebula",
+    "Description": "The nebula contains at least a dozen brilliant stars that are 50 to 100 times the mass of our Sun.",
+    "Stats": {
+      "Distance from Earth (ly)": "8,250",
+      "Apparent Magnitude": "1",
+      "Radius (ly)": "230"
+    }
+  }

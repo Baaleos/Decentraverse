@@ -1,0 +1,10 @@
+  {
+    "Name": "The Cone Nebula (NGC 2264)",
+    "Type": "Nebula",
+    "Description": "Radiation from hot stars off the top of the picture illuminates and erodes this giant, gaseous pillar. Additional ultraviolet radiation causes the gas to glow, giving the pillar its red halo of light.",
+    "Stats": {
+      "Distance from Earth (ly)": "2,700",
+      "Apparent Magnitude": "3.9",
+      "Radius (ly)": "4"
+    }
+  }

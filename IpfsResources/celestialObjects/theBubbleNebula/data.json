@@ -1,0 +1,10 @@
+  {
+    "Name": "The Bubble Nebula (NGC 7635)",
+    "Type": "Nebula",
+    "Description": "The Bubble Nebula, or NGC 7635, is caused by hot gas escaping into space from a star 45 times more massive than the Sun.",
+    "Stats": {
+      "Distance from Earth (ly)": "9,050",
+      "Apparent Magnitude": "10",
+      "Radius (ly)": "4"
+    }
+  }

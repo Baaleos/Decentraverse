@@ -15,7 +15,7 @@ contract CelestialGenerator is Owned {
     
     //Function returns a string hash for the object for which this ERC721 token pertains
     function generateCelestialObject() public returns(string) {
-        uint ten = Dice(theDiceAddress).d50();
+        uint ten = Dice(theDiceAddress).dCustom(1,73); 
         return Hashes[ten];
     }
     

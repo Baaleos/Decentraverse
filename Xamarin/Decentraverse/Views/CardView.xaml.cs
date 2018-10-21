@@ -16,6 +16,7 @@ namespace Decentraverse.Views
         CancellationToken animationThreadToken;
         CancellationTokenSource animationThread;
         Card Card;
+        SendPopup popup;
 
         public CardView()
         {
@@ -85,19 +86,29 @@ namespace Decentraverse.Views
             OverallFrameInt.BorderColor = Color.Purple;
         }
 
-        private void OnTradeButton(object sender, EventArgs args)
+        private async void OnTradeButton(object sender, EventArgs args)
         {
             if (Card == null)
                 return;
-            SendPopup sendPopup = new SendPopup();
-            PopupNavigation.Instance.PushAsync(sendPopup);
+            popup = new SendPopup();
+            await PopupNavigation.Instance.PushAsync(popup);
             SendPopup.AddressEvent += HandleSend;
         }
 
-        private void HandleSend(object sender, string address)
+        private async void HandleSend(object sender, string address)
         {
-            Solidity.ApproveForMe(Card.Token);
-            Solidity.SafeTransferFromMe(address, Card.Token);
+            SendPopup.AddressEvent -= HandleSend;
+            await Task.Run(() =>
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    popup.SendButton.IsVisible = false;
+                });
+                Solidity.ApproveForMe(Card.Token);
+                Solidity.SafeTransferFromMe(address, Card.Token);
+            });
+
+            await PopupNavigation.Instance.RemovePageAsync(popup);
         }
     }
 }

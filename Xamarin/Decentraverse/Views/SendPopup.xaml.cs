@@ -11,20 +11,11 @@ namespace Decentraverse.Views
     public partial class SendPopup : PopupPage
     {
         public static event EventHandler<string> AddressEvent;
+        public Button SendButton => SendAddress;
 
         public SendPopup()
         {
             InitializeComponent();
-        }
-
-        protected override Task OnAppearingAnimationEndAsync()
-        {
-            return Content.FadeTo(0.5);
-        }
-
-        protected override Task OnDisappearingAnimationBeginAsync()
-        {
-            return Content.FadeTo(1);
         }
 
         protected override bool OnBackButtonPressed()

@@ -28,7 +28,7 @@
            TextColor="Gray"
                  x:Name="Address"></Entry>
           <ActivityIndicator x:Name="Activity" Color="Gray" IsRunning="False"></ActivityIndicator>
-          <Button Text="Send" TextColor="#A9D1DE" Clicked="OnSend"></Button>
+          <Button x:Name="SendAddress" Text="Send" TextColor="#A9D1DE" Clicked="OnSend"></Button>
         </StackLayout>
       </ScrollView>
     </StackLayout>

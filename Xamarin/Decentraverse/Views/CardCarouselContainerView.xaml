@@ -5,5 +5,5 @@
             <WebView x:Name="Starfield" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
         </AbsoluteLayout>
     </ContentPage.Content>
-        <views:CardCarouselView />
+    <views:CardCarouselView />
 </ContentPage>

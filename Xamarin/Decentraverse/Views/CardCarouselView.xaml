@@ -1,28 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              x:Class="Decentraverse.Views.CardCarouselView" >
-    <ContentPage>
-        <ContentPage.Content>
-            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                <WebView x:Name="Starfield" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
-            </AbsoluteLayout>
-        </ContentPage.Content>
-    </ContentPage>
-    <ContentPage x:Name="Placeholder">
-        <ContentPage.Content>
-            <Label Text="No cards available!"/>
-        </ContentPage.Content>
-    </ContentPage>
-</CarouselPage>-->
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              x:Class="Decentraverse.Views.CardCarouselView" 
-              BackgroundColor="Transparent">
-            <WebView x:Name="Starfield"/>
-            <ScrollView BackgroundColor="Transparent" Opacity="0.1" Orientation="Vertical">
-                <Grid BackgroundColor="Transparent" x:Name="Scroller" Margin="20">
-                    
-                </Grid>
-            </ScrollView>
-</ContentPage>
+              x:Class="Decentraverse.Views.CardCarouselView"
+              xmlns:viewModels="clr-namespace:Decentraverse.ViewModels; assembly=Decentraverse.ViewModels"
+              xmlns:views="clr-namespace:Decentraverse.Views; assembly=Decentraverse.Views"
+              >
+</CarouselPage>

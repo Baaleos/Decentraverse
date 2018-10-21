@@ -11,8 +11,14 @@ namespace Decentraverse.Views
         public CardCarouselContainerView()
         {
             InitializeComponent();
+            var assembly = typeof(CardCarouselContainerView).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream("Decentraverse.Effects.starfield.html");
 
-
+            using (var reader = new StreamReader(stream))
+                Starfield.Source = new HtmlWebViewSource
+                {
+                    Html = reader.ReadToEnd(),
+                };
         }
     }
 }

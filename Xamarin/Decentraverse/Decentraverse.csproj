@@ -13,9 +13,10 @@
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
     <PackageReference Include="Caliburn.Micro.Xamarin.Forms" Version="3.2.0" />
     <PackageReference Include="Nethereum.Web3" Version="2.5.1" />
-    <PackageReference Include="Xamarin.Forms.CarouselView" Version="2.3.0-pre2" />
     <PackageReference Include="Ipfs.Api" Version="0.22.1" />
     <PackageReference Include="Ipfs.Core" Version="0.32.0" />
+    <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.168" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\AboutViewModel.cs" />

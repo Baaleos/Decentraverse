@@ -18,7 +18,12 @@ namespace Decentraverse
             Initialize();
             this.container = container;
             container.PerRequest<CardCarouselViewModel>();
-            container.Instance<ICardRepository>(new EthereumCardRepository());
+            var keyResolver = new PrivateKeyResolver
+            {
+                Key = "719736dabed88eb45ee9ceceb31cd671ec2ed5a163985cd2049cda438fc077ec"
+            };
+            container.Instance(keyResolver);
+            container.Instance<ICardRepository>(new EthereumCardRepository(keyResolver));
 
             DisplayRootView<CardCarouselView>();
         }

@@ -98,6 +98,11 @@ namespace Decentraverse.Views
         private async void HandleSend(object sender, string address)
         {
             SendPopup.AddressEvent -= HandleSend;
+            if (Solidity.MyAddress.Equals(address, StringComparison.CurrentCultureIgnoreCase)) {
+                await DisplayAlert("Bad address", "You can't send to yourself!", "OK");
+                await PopupNavigation.Instance.RemovePageAsync(popup);
+                return;
+            }
             await Task.Run(() =>
             {
                 Device.BeginInvokeOnMainThread(() =>
@@ -109,6 +114,16 @@ namespace Decentraverse.Views
             });
 
             await PopupNavigation.Instance.RemovePageAsync(popup);
+        }
+
+        private async void OnPurchaseButton(object sender, EventArgs args)
+        {
+            await Task.Run(() =>
+            {
+                Solidity.PurchaseCard(Solidity.MyAddress, Solidity.MyPrivateKey);
+            });
+
+            await DisplayAlert("Gratz", "Bought! Refresh to see.", "Yay!");
         }
     }
 }

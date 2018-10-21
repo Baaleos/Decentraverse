@@ -64,7 +64,7 @@ namespace Decentraverse.SolidityMethods
             var contract = SolidityMethods.Solidity.GetContract(privateKey);
             var createCelestialObject = contract.GetFunction("approve");
             var transactionHash =
-                createCelestialObject.SendTransactionAndWaitForReceiptAsync(account.Address, new HexBigInteger(900000), new HexBigInteger(100000000000000000), null, toAddress,tokenId).Result;
+                createCelestialObject.SendTransactionAndWaitForReceiptAsync(account.Address, new HexBigInteger(900000), null, null, toAddress,tokenId).Result;
 
         }
 
@@ -79,7 +79,7 @@ namespace Decentraverse.SolidityMethods
             var contract = SolidityMethods.Solidity.GetContract(privateKey);
             var safeTransferFrom = contract.GetFunction("safeTransferFrom");
             var transactionHash =
-                safeTransferFrom.SendTransactionAndWaitForReceiptAsync(account.Address, new HexBigInteger(900000), new HexBigInteger(100000000000000000), null, fromAddress,toAddress, tokenId).Result;
+                safeTransferFrom.SendTransactionAndWaitForReceiptAsync(account.Address, new HexBigInteger(900000), null, null, fromAddress,toAddress, tokenId).Result;
 
         }
 

@@ -22,6 +22,13 @@
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="Center"
                         Clicked="OnTradeButton" />
+                            <Button Text="BUY"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
+                        Clicked="OnPurchaseButton" />
                     </Frame>
                 </StackLayout>
             </AbsoluteLayout>

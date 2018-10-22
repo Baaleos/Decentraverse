@@ -1,15 +1,22 @@
-﻿using Caliburn.Micro;
+﻿using System.Threading.Tasks;
+using Decentraverse.Contracts;
 using Decentraverse.Models;
+using Prism.Mvvm;
 
 namespace Decentraverse.ViewModels
 {
-    public class CardViewModel : Screen
+    public class CardViewModel : BindableBase
     {
-        public Card Card { get; set; }
+        private ISolidityService solidityService;
 
-        public CardViewModel(Card card)
+        public CardViewModel(ISolidityService solidityService)
         {
-            Card = card;
+            this.solidityService = solidityService;
+        }
+
+        public async Task OnTradeButton(Card card)
+        {
+
         }
     }
 }

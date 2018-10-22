@@ -1,21 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading;
 using System.Threading.Tasks;
-using Decentraverse.Effects;
-using Decentraverse.Models;
-using Decentraverse.SolidityMethods;
-using Decentraverse.ViewModels;
-using Rg.Plugins.Popup.Services;
 using Xamarin.Forms;
 
 namespace Decentraverse.Views
 {
     public partial class CardView : ContentPage
     {
-        CancellationToken animationThreadToken;
-        CancellationTokenSource animationThread;
-        Card Card;
+        Models.Card Card;
         SendPopup popup;
 
         public CardView()
@@ -26,28 +17,28 @@ namespace Decentraverse.Views
 
         public void BindingChanged()
         {
-            CardViewModel cardModel = BindingContext as CardViewModel;
-            if (cardModel == null)
-                return;
+            //CardViewModel cardModel = BindingContext as CardViewModel;
+            //if (cardModel == null)
+            //    return;
 
-            Card = cardModel.Card;
-            CardImage.Source = cardModel.Card.GetImage();
+            //Card = cardModel.Card;
+            //CardImage.Source = cardModel.Card.GetImage();
 
-            switch (cardModel.Card.CardRarity)
-            {
-                case Card.Rarity.UNIVERSAL:
-                    Universal();
-                    break;
-                case Card.Rarity.COMMON:
-                    Common();
-                    break;
-                case Card.Rarity.HEAVENLY:
-                    Heavenly();
-                    break;
-                case Card.Rarity.SINGULAR:
-                    Singular();
-                    break;
-            }
+            //switch (cardModel.Card.CardRarity)
+            //{
+            //    case Card.Rarity.UNIVERSAL:
+            //        Universal();
+            //        break;
+            //    case Card.Rarity.COMMON:
+            //        Common();
+            //        break;
+            //    case Card.Rarity.HEAVENLY:
+            //        Heavenly();
+            //        break;
+            //    case Card.Rarity.SINGULAR:
+            //        Singular();
+            //        break;
+            //}
 
             Background.Opacity = 0;
         }
@@ -88,42 +79,32 @@ namespace Decentraverse.Views
 
         private async void OnTradeButton(object sender, EventArgs args)
         {
-            if (Card == null)
-                return;
-            popup = new SendPopup();
-            await PopupNavigation.Instance.PushAsync(popup);
-            SendPopup.AddressEvent += HandleSend;
+            //if (Card == null)
+            //    return;
+            //popup = new SendPopup();
+            //await PopupNavigation.Instance.PushAsync(popup);
+            //SendPopup.AddressEvent += HandleSend;
         }
 
-        private async void HandleSend(object sender, string address)
+        private async Task HandleSend(object sender, string address)
         {
-            SendPopup.AddressEvent -= HandleSend;
-            if (Solidity.MyAddress.Equals(address, StringComparison.CurrentCultureIgnoreCase)) {
-                await DisplayAlert("Bad address", "You can't send to yourself!", "OK");
-                await PopupNavigation.Instance.RemovePageAsync(popup);
-                return;
-            }
-            await Task.Run(() =>
-            {
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    popup.SendButton.IsVisible = false;
-                });
-                Solidity.ApproveForMe(Card.Token);
-                Solidity.SafeTransferFromMe(address, Card.Token);
-            });
+            //SendPopup.AddressEvent -= HandleSend;
+            //if (SolidityService.MyAddress.Equals(address, StringComparison.CurrentCultureIgnoreCase)) {
+            //    await DisplayAlert("Bad address", "You can't send to yourself!", "OK");
+            //    await PopupNavigation.Instance.RemovePageAsync(popup);
+            //    return;
+            //}
 
-            await PopupNavigation.Instance.RemovePageAsync(popup);
+            //popup.SendButton.IsVisible = false;
+            //await SolidityService.ApproveForMe(Card.Token);
+            //await SolidityService.SafeTransferFromMe(address, Card.Token);
+            //await PopupNavigation.Instance.RemovePageAsync(popup);
         }
 
         private async void OnPurchaseButton(object sender, EventArgs args)
         {
-            await Task.Run(() =>
-            {
-                Solidity.PurchaseCard(Solidity.MyAddress, Solidity.MyPrivateKey);
-            });
-
-            await DisplayAlert("Gratz", "Bought! Refresh to see.", "Yay!");
+            //await SolidityService.PurchaseCardForMyself(SolidityService.MyAddress);
+            //await DisplayAlert("Gratz", "Bought! Refresh to see.", "Yay!");
         }
     }
 }

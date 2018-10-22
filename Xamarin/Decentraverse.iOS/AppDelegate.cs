@@ -1,6 +1,8 @@
 ﻿using System.Diagnostics;
-using Caliburn.Micro;
+using Decentraverse.Views;
 using Foundation;
+using Prism;
+using Prism.Ioc;
 using UIKit;
 
 namespace Decentraverse.iOS
@@ -12,8 +14,6 @@ namespace Decentraverse.iOS
     [DebuggerStepThrough]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
-        private readonly CaliburnAppDelegate appDelegate = new CaliburnAppDelegate();
-
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
         // method you should instantiate the window, load the UI into it and then make the window
@@ -23,11 +23,19 @@ namespace Decentraverse.iOS
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            Rg.Plugins.Popup.Popup.Init();
+            //Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(IoC.Get<Decentraverse.App>());
+            LoadApplication(new Decentraverse(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public class iOSInitializer : IPlatformInitializer
+        {
+            public void RegisterTypes(IContainerRegistry containerRegistry)
+            {
+
+            }
         }
     }
 }

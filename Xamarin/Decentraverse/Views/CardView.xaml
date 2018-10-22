@@ -5,7 +5,7 @@
     x:Class="Decentraverse.Views.CardView"
     >
     <ScrollView>
-    <Frame x:Name="OverallFrameExt" Padding="1" HasShadow="false" HorizontalOptions="FillAndExpand" CornerRadius="5" Margin="5" >
+    <Frame x:Name="OverallFrameExt" PViewadding="1" HasShadow="false" HorizontalOptions="FillAndExpand" CornerRadius="5" Margin="5" >
         <Frame x:Name="OverallFrameInt" Padding="5" HasShadow="false" HorizontalOptions="FillAndExpand" CornerRadius="5">
             <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5">
                 <Image WidthRequest="25" HeightRequest="25" x:Name="Background" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"/>
@@ -21,14 +21,14 @@
                                 FontSize="Large"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="Center"
-                        Clicked="OnTradeButton" />
+                        Command="OnTradeButton" CommandParameter="{Binding Card}" />
                             <Button Text="BUY"
                                 TextColor="Black"
                                 FontAttributes="Bold"
                                 FontSize="Large"
                         VerticalOptions="CenterAndExpand"
                         HorizontalOptions="Center"
-                        Clicked="OnPurchaseButton" />
+                        Command="OnPurchaseButton" />
                     </Frame>
                 </StackLayout>
             </AbsoluteLayout>

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using Decentraverse.IPFS;
 using Newtonsoft.Json;
 using Xamarin.Forms;
 
@@ -50,28 +47,19 @@ namespace Decentraverse.Models
         [JsonProperty(PropertyName = "Image")]
         public string ImageHash { get; protected set; }
 
+        [JsonIgnore]
+        public ImageSource ImageSource { get; protected set; }
 
-        private ImageSource _image;
-        public ImageSource GetImage()
-        {
-            if (_image == null)
-            {
-                //Stream stream = await IPFSFileSystem.GetByHash(ImageToken);
-                //_image = ImageSource.FromStream(() => stream);
-                _image = ImageSource.FromUri(new Uri(IPFSFileSystem.CreateIPFSURL(ImageHash)));
-            }
-            return _image;
-        }
-
-        public Card()
-        { }
-
-        public Card(string name, string imageToken, string fact, Rarity rarity)
+        public Card(string name, string imageToken, string fact, Rarity rarity, ImageSource source)
         {
             Name = name;
             ImageHash = imageToken;
             Fact = fact;
             CardRarity = rarity;
+            ImageSource = source;
         }
+
+        protected Card()
+        { }
     }
 }

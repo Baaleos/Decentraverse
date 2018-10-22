@@ -10,18 +10,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
-    <PackageReference Include="Caliburn.Micro.Xamarin.Forms" Version="3.2.0" />
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
     <PackageReference Include="Nethereum.Web3" Version="2.5.1" />
     <PackageReference Include="Ipfs.Api" Version="0.22.1" />
     <PackageReference Include="Ipfs.Core" Version="0.32.0" />
     <PackageReference Include="Microsoft.Net.Http" Version="2.2.29" />
     <PackageReference Include="Rg.Plugins.Popup" Version="1.1.4.168" />
+    <PackageReference Include="Prism.Core" Version="7.1.0.431" />
+    <PackageReference Include="Prism.Forms" Version="7.1.0.431" />
+    <PackageReference Include="Prism.Autofac.Forms" Version="7.1.0.431" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="ViewModels\AboutViewModel.cs" />
     <Compile Remove="ViewModels\BaseViewModel.cs" />
     <Compile Remove="Contracts\Item.cs" />
+    <Compile Remove="App.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />
@@ -35,6 +38,9 @@
     <None Remove="Images\Singular.png" />
     <None Remove="Images\Universal.png" />
     <None Remove="Effects\starfield.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Views\CardCarouselContainer %28copy%29.xaml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Common.png" />

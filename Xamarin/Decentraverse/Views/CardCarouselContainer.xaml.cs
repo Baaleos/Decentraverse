@@ -6,12 +6,12 @@ using Xamarin.Forms;
 
 namespace Decentraverse.Views
 {
-    public partial class CardCarouselContainerView : ContentPage
+    public partial class CardCarouselContainer : ContentPage
     {
-        public CardCarouselContainerView()
+        public CardCarouselContainer()
         {
             InitializeComponent();
-            var assembly = typeof(CardCarouselContainerView).GetTypeInfo().Assembly;
+            var assembly = typeof(CardCarouselContainer).GetTypeInfo().Assembly;
             Stream stream = assembly.GetManifestResourceStream("Decentraverse.Effects.starfield.html");
 
             using (var reader = new StreamReader(stream))

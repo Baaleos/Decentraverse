@@ -7,10 +7,8 @@ namespace Decentraverse.Contracts
 {
     public interface ICardRepository
     {
-        Card GetCard(string hash);
-        IEnumerable<Card> GetMyCards();
-        string MyAddress { get; }
-
+        Task<Card> GetCard(string hash);
+        Task<IEnumerable<Card>> GetMyCards();
         IEnumerable<int> GetCardTokenIds();
     }
 }

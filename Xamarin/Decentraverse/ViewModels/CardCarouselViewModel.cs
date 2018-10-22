@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using Caliburn.Micro;
+using System.Threading.Tasks;
 using Decentraverse.Contracts;
 using Decentraverse.Models;
 using Decentraverse.Views;
+using Prism.Mvvm;
 using Xamarin.Forms;
 
 namespace Decentraverse.ViewModels
 {
-    public class CardCarouselViewModel : Screen
+    public class CardCarouselViewModel : BindableBase
     {
-        CardCarouselView view;
+        CardCarousel view;
 
-        public ObservableCollection<CardView> CardViews = new ObservableCollection<CardView>();
+        public ObservableCollection<Models.Card> Cards = new ObservableCollection<Models.Card>();
         private ICardRepository repo;
 
         public CardCarouselViewModel(ICardRepository cardRepository)
@@ -20,52 +21,51 @@ namespace Decentraverse.ViewModels
             repo = cardRepository;
         }
 
-        protected override void OnViewAttached(object view, object context)
+        private async Task RefreshCards()
         {
-            this.view = view as CardCarouselView;
-            RefreshCards(null, null);
-        }
+            Cards.Clear();
 
-        private void RefreshCards(object sender, EventArgs args)
-        {
-            view.Children.Clear();
-            CardViews.Clear();
+            foreach (var card in await repo.GetMyCards())
+                Cards.Add(card);
 
-            foreach (var card in repo.GetMyCards())
-            {
-                CardView cardView = new CardView
-                {
-                    BindingContext = new CardViewModel(card)
-                };
+            //view.Children.Clear();
+            //CardViews.Clear();
 
-                CardViews.Add(cardView);
-            }
+            //foreach (var card in await repo.GetMyCards())
+            //{
+            //    CardView cardView = new CardView
+            //    {
+            //        BindingContext = new CardViewModel(card)
+            //    };
 
-            if (CardViews.Count == 0)
-                return;
+            //    CardViews.Add(cardView);
+            //}
 
-            foreach (var child in CardViews)
-            {
-                view.Children.Add(child);
-            }
+            //if (CardViews.Count == 0)
+            //    return;
 
-            var button = new Button
-            {
-                Text = "Refresh",
-                HorizontalOptions = LayoutOptions.CenterAndExpand
-            };
+            //foreach (var child in CardViews)
+            //{
+            //    view.Children.Add(child);
+            //}
 
-            button.Clicked += RefreshCards;
+            //var button = new Button
+            //{
+            //    Text = "Refresh",
+            //    HorizontalOptions = LayoutOptions.CenterAndExpand
+            //};
 
-            view.Children.Add(new ContentPage
-            {
-                Content = new AbsoluteLayout
-                {
-                    Children = {
-                        button
-                    }
-                }
-            });
+            //button.Clicked += async (object sender, EventArgs e) => await RefreshCards();
+
+            //view.Children.Add(new ContentPage
+            //{
+            //    Content = new AbsoluteLayout
+            //    {
+            //        Children = {
+            //            button
+            //        }
+            //    }
+            //});
         }
     }
 }

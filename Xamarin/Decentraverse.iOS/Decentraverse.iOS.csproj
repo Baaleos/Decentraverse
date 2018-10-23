@@ -96,6 +96,7 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CaliburnAppDelegate.cs" />
+    <Compile Include="LabelShadowEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -141,6 +142,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Resources\Common.png" />
+    <ImageAsset Include="Resources\Universal.png" />
+    <ImageAsset Include="Resources\Heavenly.png" />
+    <ImageAsset Include="Resources\Singular.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -156,15 +161,24 @@
     <PackageReference Include="Caliburn.Micro.Xamarin.Forms">
       <Version>3.2.0</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms.CarouselView">
-      <Version>2.3.0-pre2</Version>
+    <PackageReference Include="Acr.UserDialogs">
+      <Version>7.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>1.1.4.168</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Decentraverse2\Decentraverse.csproj">
+    <ProjectReference Include="..\Decentraverse\Decentraverse.csproj">
       <Project>{783FBC39-B8AB-40D1-BD35-175F57E99349}</Project>
       <Name>Decentraverse</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\Common.imageset\" />
+    <Folder Include="Assets.xcassets\Universal.imageset\" />
+    <Folder Include="Assets.xcassets\Heavenly.imageset\" />
+    <Folder Include="Assets.xcassets\Singular.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

@@ -1,5 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading.Tasks;
+using Decentraverse.IPFS;
+using Newtonsoft.Json;
+using Xamarin.Forms;
 
 namespace Decentraverse.Models
 {
@@ -15,41 +20,58 @@ namespace Decentraverse.Models
             /// <summary>
             /// Tier 2
             /// </summary>
-            TIER_2 = 1,
+            COMMON = 1,
 
             /// <summary>
             /// Tier 3
             /// </summary>
-            TIER_3 = 2,
+            HEAVENLY = 2,
 
             /// <summary>
             /// Tier 4
             /// </summary>
-            HEAVENLY = 3
+            SINGULAR = 3
         }
 
-        public string ImageURL { get; protected set; }
-        public string CardName { get; protected set; }
-        public string Fact { get; protected set; }
-        public Rarity CardRarity { get; protected set; }
-        public readonly IEnumerable<Statistic> Stats;
+        public string Name { get; set; }
 
-        public Card(string name, string imageURL, string fact, Rarity rarity, IEnumerable<Statistic> stats = null)
+        [JsonProperty(PropertyName = "Description")]
+        public string Fact { get; protected set; }
+
+        [JsonProperty(PropertyName = "Rarity")]
+        public Rarity CardRarity { get; protected set; }
+
+        [JsonProperty(PropertyName = "Stats")]
+        public Dictionary<string, string> Stats;
+
+        [JsonIgnore]
+        public int Token { get; set; }
+
+        [JsonProperty(PropertyName = "Image")]
+        public string ImageHash { get; protected set; }
+
+
+        private ImageSource _image;
+        public ImageSource GetImage()
         {
-            CardName = name;
-            ImageURL = imageURL;
+            if (_image == null)
+            {
+                //Stream stream = await IPFSFileSystem.GetByHash(ImageToken);
+                //_image = ImageSource.FromStream(() => stream);
+                _image = ImageSource.FromUri(new Uri(IPFSFileSystem.CreateIPFSURL(ImageHash)));
+            }
+            return _image;
+        }
+
+        public Card()
+        { }
+
+        public Card(string name, string imageToken, string fact, Rarity rarity)
+        {
+            Name = name;
+            ImageHash = imageToken;
             Fact = fact;
             CardRarity = rarity;
-            if (stats == null)
-                stats = new List<Statistic>();
-            Stats = new List<Statistic>(stats);
         }
-
-        public Card(int tokenId)
-        {
-
-        }
-
-        
     }
 }

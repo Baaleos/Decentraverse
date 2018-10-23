@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Caliburn.Micro;
-using Decentraverse.ViewModels;
 
 namespace Decentraverse.iOS
 {
@@ -42,7 +41,7 @@ namespace Decentraverse.iOS
             return new[]
             {
                 GetType().Assembly,
-                typeof(CardViewModel).Assembly
+                typeof(ViewModels.CardCarouselViewModel).Assembly
             };
         }
     }

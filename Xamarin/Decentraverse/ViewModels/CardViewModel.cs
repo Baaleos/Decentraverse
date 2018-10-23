@@ -1,17 +1,15 @@
-﻿using System.Collections.ObjectModel;
-using Caliburn.Micro;
-using Decentraverse.Contracts;
+﻿using Caliburn.Micro;
 using Decentraverse.Models;
 
 namespace Decentraverse.ViewModels
 {
     public class CardViewModel : Screen
     {
-        public ObservableCollection<Card> Cards { get; set; }
+        public Card Card { get; set; }
 
-        public CardViewModel(ICardRepository cardRepo)
+        public CardViewModel(Card card)
         {
-            Cards = new ObservableCollection<Card>(cardRepo.GetMyCards());
+            Card = card;
         }
     }
 }

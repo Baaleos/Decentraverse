@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ContractAddress" xml:space="preserve">
-    <value>0x2e0352612a9e025d768a224510987ad3e012ff3b</value>
+    <value>0xc49f8d84e971fed66cd6a31249997b65154ced07</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="DecentraverseABI" type="System.Resources.ResXFileRef, System.Windows.Forms">

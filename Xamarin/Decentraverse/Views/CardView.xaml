@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns:control="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.CarouselView" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Decentraverse.Views.CardView">
-    <ContentPage.Content>
-        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-           <control:CarouselView ItemsSource="{Binding Cards, Mode=TwoWay}">
-               <control:CarouselView.ItemTemplate>
-                   <DataTemplate>
-                        <Label Text="{Binding Name}" />
-                        <Image Source="{Binding ImageURL}" />
-                   </DataTemplate>
-               </control:CarouselView.ItemTemplate>
-           </control:CarouselView>
-        </Grid>
-    </ContentPage.Content>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Decentraverse.Views.CardView"
+    >
+    <ScrollView>
+    <Frame x:Name="OverallFrameExt" Padding="1" HasShadow="false" HorizontalOptions="FillAndExpand" CornerRadius="5" Margin="5" >
+        <Frame x:Name="OverallFrameInt" Padding="5" HasShadow="false" HorizontalOptions="FillAndExpand" CornerRadius="5">
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5">
+                <Image WidthRequest="25" HeightRequest="25" x:Name="Background" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" Aspect="AspectFill"/>
+                <StackLayout AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" BackgroundColor="Transparent">
+                    <Label Margin="5" x:Name="Name" Text="{Binding Card.Name}" HorizontalOptions="StartAndExpand" FontSize="Large">
+                    </Label>
+                    <Image x:Name="CardImage"></Image>
+                    <Label x:Name="Fact" Text="{Binding Card.Fact}" Margin="5" FontAttributes="Italic" FontSize="Small"></Label>
+                    <Frame BorderColor="Black" HasShadow="false" BackgroundColor="Transparent">
+                        <Button Text="TRADE"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
+                        Clicked="OnTradeButton" />
+                            <Button Text="BUY"
+                                TextColor="Black"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                        VerticalOptions="CenterAndExpand"
+                        HorizontalOptions="Center"
+                        Clicked="OnPurchaseButton" />
+                    </Frame>
+                </StackLayout>
+            </AbsoluteLayout>
+        </Frame>
+    </Frame>
+    </ScrollView>
 </ContentPage>

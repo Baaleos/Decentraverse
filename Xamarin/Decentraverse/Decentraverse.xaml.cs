@@ -10,12 +10,14 @@ namespace Decentraverse
 {
     public partial class Decentraverse : PrismApplication
     {
-        public Decentraverse() : base(null) { }
+        public Decentraverse() : base() { }
+
+        public Decentraverse(IPlatformInitializer init) : base(init) { }
 
         protected override void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync(StartPage.PATH);
+            NavigationService.NavigateAsync(Starfield.PATH);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -38,6 +40,8 @@ namespace Decentraverse
             containerRegistry.RegisterForNavigation<CardCarousel, CardCarouselViewModel>(CardCarousel.PATH);
             containerRegistry.RegisterForNavigation<CardView, CardViewModel>();
             containerRegistry.RegisterForNavigation<StartPage, StartPageViewModel>(StartPage.PATH);
+            containerRegistry.RegisterForNavigation<Starfield>(Starfield.PATH);
+
         }
     }
 }

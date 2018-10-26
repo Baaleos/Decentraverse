@@ -14,6 +14,7 @@ namespace Decentraverse.Droid
             base.OnCreate(savedInstanceState);
             //Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             LoadApplication(new Decentraverse(new AndroidInitializer()));
         }
@@ -30,6 +31,12 @@ namespace Decentraverse.Droid
         //        // Do something if there are not any pages in the `PopupStack`
         //    }
         //}
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 
     public class AndroidInitializer : IPlatformInitializer

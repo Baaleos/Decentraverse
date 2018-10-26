@@ -3,14 +3,17 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Decentraverse.Views.StartPage"
+    xmlns:views="clr-namespace:Decentraverse.Views; assembly=Decentraverse.Views"
     BackgroundColor="Black" >
     <ContentPage.Content>
         <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <WebView x:Name="Starfield" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>
-            <StackLayout>
+<!--            <WebView x:Name="Starfield" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All"/>-->
+<!--            <Starfield />-->
+            <views:SKCanvasView PaintSurface="OnPainting" />
+<!--            <StackLayout>
                 <Label FontSize="Large" Text="DECENTRAVERSE" FontAttributes="Bold" TextColor="White" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
                 <Button BackgroundColor="Transparent" Command="{Binding Start}" BorderColor="White" BorderWidth="2" TextColor="White" Padding="10" Margin="0,0,0,50" VerticalOptions="End" HorizontalOptions="CenterAndExpand" Text="BEGIN" CornerRadius="10" />
-            </StackLayout>
+            </StackLayout>-->
         </Grid>
     </ContentPage.Content>
 </ContentPage>

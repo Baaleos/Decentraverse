@@ -13,12 +13,18 @@ namespace Decentraverse.ViewModels
     {
         CardCarousel view;
 
-        public ObservableCollection<Models.Card> Cards = new ObservableCollection<Models.Card>();
+        public ObservableCollection<Card> Cards {
+            get => _cards;
+            private set => SetProperty(ref _cards, value);
+        }
+
+        private ObservableCollection<Card> _cards = new ObservableCollection<Card>();
         private ICardRepository repo;
 
         public CardCarouselViewModel(ICardRepository cardRepository)
         {
             repo = cardRepository;
+            Cards.Add(new Card("Jupiter", "ASD", "Banter", Card.Rarity.HEAVENLY, ImageSource.FromUri(new Uri("https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Jupiter_and_its_shrunken_Great_Red_Spot.jpg/330px-Jupiter_and_its_shrunken_Great_Red_Spot.jpg"))));
         }
 
         private async Task RefreshCards()

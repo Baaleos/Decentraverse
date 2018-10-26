@@ -2,7 +2,7 @@
 
 namespace Decentraverse.Views
 {
-    public partial class CardCarousel : CarouselPage
+    public partial class CardCarousel
     {
         public static string PATH => "CardCarousel";
 

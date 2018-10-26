@@ -16,7 +16,7 @@ namespace Decentraverse.ViewModels
             Start = new DelegateCommand(StartCommand);
         }
 
-        public async void StartCommand()
+        private async void StartCommand()
         {
             await navigationService.NavigateAsync(CardCarousel.PATH);
         }

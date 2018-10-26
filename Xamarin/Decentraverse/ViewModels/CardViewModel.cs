@@ -7,11 +7,9 @@ namespace Decentraverse.ViewModels
 {
     public class CardViewModel : BindableBase
     {
-        private ISolidityService solidityService;
-
-        public CardViewModel(ISolidityService solidityService)
+        public CardViewModel()
         {
-            this.solidityService = solidityService;
+            
         }
 
         public async Task OnTradeButton(Card card)

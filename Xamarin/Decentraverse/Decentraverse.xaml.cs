@@ -3,19 +3,20 @@ using Decentraverse.Services;
 using Decentraverse.ViewModels;
 using Decentraverse.Views;
 using Prism;
-using Prism.Autofac;
 using Prism.Ioc;
 
 namespace Decentraverse
 {
-    public partial class Decentraverse : PrismApplication
+    public partial class Decentraverse
     {
-        public Decentraverse() : base(null) { }
+        public Decentraverse()
+        { }
+        public Decentraverse(IPlatformInitializer platformInitializer = null) : base(platformInitializer) { }
 
         protected override void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync(StartPage.PATH);
+            NavigationService.NavigateAsync(CardCarousel.PATH);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -35,7 +36,7 @@ namespace Decentraverse
             containerRegistry.Register<ISolidityService, SolidityService>();
             containerRegistry.Register<ICardRepository, EthereumCardRepository>();
 
-            containerRegistry.RegisterForNavigation<CardCarousel, CardCarouselViewModel>(CardCarousel.PATH);
+            containerRegistry.RegisterForNavigation<CardCarouselContainer>(CardCarousel.PATH);
             containerRegistry.RegisterForNavigation<CardView, CardViewModel>();
             containerRegistry.RegisterForNavigation<StartPage, StartPageViewModel>(StartPage.PATH);
         }

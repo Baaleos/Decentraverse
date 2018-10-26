@@ -59,7 +59,7 @@ namespace Decentraverse.Models
             ImageSource = source;
         }
 
-        protected Card()
+        public Card()
         { }
     }
 }

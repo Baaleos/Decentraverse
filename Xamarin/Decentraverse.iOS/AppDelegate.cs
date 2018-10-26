@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Decentraverse.Views;
 using Foundation;
+using PanCardView.iOS;
 using Prism;
 using Prism.Ioc;
 using UIKit;
@@ -24,6 +25,7 @@ namespace Decentraverse.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             //Rg.Plugins.Popup.Popup.Init();
+            CardsViewRenderer.Preserve();
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new Decentraverse(new iOSInitializer()));
 

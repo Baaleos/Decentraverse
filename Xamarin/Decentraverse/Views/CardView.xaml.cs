@@ -1,44 +1,52 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Decentraverse.Models;
 using Xamarin.Forms;
 
 namespace Decentraverse.Views
 {
     public partial class CardView : ContentPage
     {
-        Models.Card Card;
-        SendPopup popup;
+        public static readonly BindableProperty CardProperty = 
+            BindableProperty.Create(nameof(Card), typeof(Card), typeof(CardView), null, propertyChanged: HandleCardChange);
 
-        public CardView()
-        {
-            InitializeComponent();
-            BindingContextChanged += (object sender, EventArgs e) => BindingChanged();
+        private static void HandleCardChange(BindableObject bindable, object old, object newObj) {
+            if (!(bindable is CardView cardView))
+                return;
+            if(!(newObj is Card card))
+                return;
+            cardView.SetupCard(card);
         }
 
-        public void BindingChanged()
-        {
-            //CardViewModel cardModel = BindingContext as CardViewModel;
-            //if (cardModel == null)
-            //    return;
+        public Card Card {
+            get => GetValue(CardProperty) as Card;
+            protected set => SetValue(CardProperty, value);
+        }
 
-            //Card = cardModel.Card;
-            //CardImage.Source = cardModel.Card.GetImage();
+        public CardView() {
+            InitializeComponent();
+        }
 
-            //switch (cardModel.Card.CardRarity)
-            //{
-            //    case Card.Rarity.UNIVERSAL:
-            //        Universal();
-            //        break;
-            //    case Card.Rarity.COMMON:
-            //        Common();
-            //        break;
-            //    case Card.Rarity.HEAVENLY:
-            //        Heavenly();
-            //        break;
-            //    case Card.Rarity.SINGULAR:
-            //        Singular();
-            //        break;
-            //}
+        private void SetupCard(Card card) {
+            Name.Text = card.Name;
+            CardImage.Source = card.ImageSource;
+            Fact.Text = card.Fact;
+
+            switch (card.CardRarity)
+            {
+                case Card.Rarity.UNIVERSAL:
+                    Universal();
+                    break;
+                case Card.Rarity.COMMON:
+                    Common();
+                    break;
+                case Card.Rarity.HEAVENLY:
+                    Heavenly();
+                    break;
+                case Card.Rarity.SINGULAR:
+                    Singular();
+                    break;
+            }
 
             Background.Opacity = 0;
         }

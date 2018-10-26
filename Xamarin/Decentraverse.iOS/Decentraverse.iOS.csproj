@@ -141,10 +141,18 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Resources\Common.png" />
-    <ImageAsset Include="Resources\Universal.png" />
-    <ImageAsset Include="Resources\Heavenly.png" />
-    <ImageAsset Include="Resources\Singular.png" />
+    <ImageAsset Include="Resources\Common.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Universal.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Heavenly.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Singular.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -153,6 +161,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CarouselView">
+      <Version>7.0.3.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.0.1</Version>
@@ -172,9 +183,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\Common.imageset\" />
-    <Folder Include="Assets.xcassets\Universal.imageset\" />
     <Folder Include="Assets.xcassets\Heavenly.imageset\" />
     <Folder Include="Assets.xcassets\Singular.imageset\" />
+    <Folder Include="Assets.xcassets\Universal.imageset\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

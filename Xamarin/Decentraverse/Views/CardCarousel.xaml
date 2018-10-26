@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
-              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              x:Class="Decentraverse.Views.CardCarousel"
-              xmlns:viewModels="clr-namespace:Decentraverse.ViewModels; assembly=Decentraverse.ViewModels"
-              xmlns:views="clr-namespace:Decentraverse.Views; assembly=Decentraverse.Views"
-              ItemsSource="{Binding Cards}">
-    <CarouselPage.ItemTemplate>
+<carouselLayout:CarouselLayout
+                xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:views="clr-namespace:Decentraverse.Views;assembly=Decentraverse"
+                xmlns:carouselLayout="clr-namespace:CarouselView.Controls.CarouselLayout;assembly=CarouselView"
+                x:Class="Decentraverse.Views.CardCarousel"
+                Padding="10"
+                ItemsSource="{Binding Cards}">
+    <carouselLayout:CarouselLayout.ItemTemplate>
         <DataTemplate>
-            <views:CardView BindingContext="{Binding Card}" />
+            <views:CardView Card="{Binding}" />
         </DataTemplate>
-    </CarouselPage.ItemTemplate>
-    <ContentPage>
-        <ContentPage.Content>
-            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Text="HI!" />
-        </ContentPage.Content>
-    </ContentPage>
-</CarouselPage>
+    </carouselLayout:CarouselLayout.ItemTemplate>
+</carouselLayout:CarouselLayout>

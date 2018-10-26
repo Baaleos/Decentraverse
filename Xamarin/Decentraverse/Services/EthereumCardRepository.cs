@@ -39,6 +39,8 @@ namespace Decentraverse.Services
         public IEnumerable<Card> GetMyCards()
         {
             List<Card> cards = new List<Card>();
+
+
             Solidity.MyAddress = Solidity.GetAddress(PrivateKey);
             Solidity.MyPrivateKey = PrivateKey;
             //return new List<Card> {
@@ -49,18 +51,26 @@ namespace Decentraverse.Services
             //};
 
             int[] ids = Solidity.GetCardTokenIds(PrivateKey).ToArray();
+            List<System.Threading.Thread> Threads = new List<System.Threading.Thread>();
             foreach(int id in ids)
             {
-                var owner = Solidity.GetOwnerOf(id, PrivateKey);
-                if (owner.ToLower() == MyAddress.ToLower())
-                {
-                    var ipfsHash = Solidity.CardTokenIdToHash(id, PrivateKey);
-                    Card card = IPFSFileSystem.DeserializeJSONObjectByHash<Card>(ipfsHash);
-                    card.Token = id;
-                    cards.Add(card);
-                }
+                var _thread = new System.Threading.Thread(()=>{
+                    var owner = Solidity.GetOwnerOf(id, PrivateKey);
+                    if (owner.ToLower() == MyAddress.ToLower())
+                    {
+                        var ipfsHash = Solidity.CardTokenIdToHash(id, PrivateKey);
+                        Card card = IPFSFileSystem.DeserializeJSONObjectByHash<Card>(ipfsHash);
+                        card.Token = id;
+                        cards.Add(card);
+                    }
+                });
+                _thread.IsBackground = true;
+                Threads.Add(_thread);
+                _thread.Start();
             }
-
+            while(Threads.Any(ee=> ee.IsAlive)){
+                System.Threading.Thread.Sleep(100);
+            }
             return cards;
         }
 

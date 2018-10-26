@@ -35,7 +35,7 @@ namespace Decentraverse.SolidityMethods
             string contractAddress = Resources.ContractAddress;
             var privKey = new Nethereum.Signer.EthECKey(privateKey);
             var account = new Nethereum.Web3.Accounts.Account(privKey);
-            var web3 = _web3 ?? new Web3(account, "https://ropsten.infura.io");
+            var web3 = _web3 ?? new Web3(account, "https://ropsten.infura.io/v3/2105932667224bc4a18e97688178ad03");
             var contract = web3.Eth.GetContract(abi, contractAddress);
             return contract;
         }
@@ -111,7 +111,7 @@ namespace Decentraverse.SolidityMethods
             var privKey = new Nethereum.Signer.EthECKey(privateKey);
             var account = new Nethereum.Web3.Accounts.Account(privKey);
 
-            var web3 = new Web3(account, "https://ropsten.infura.io");
+            var web3 = new Web3(account, "https://ropsten.infura.io/v3/2105932667224bc4a18e97688178ad03");
             return web3;
         }
 

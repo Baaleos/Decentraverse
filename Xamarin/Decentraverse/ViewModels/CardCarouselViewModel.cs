@@ -5,7 +5,7 @@ using Decentraverse.Contracts;
 using Decentraverse.Models;
 using Decentraverse.Views;
 using Xamarin.Forms;
-
+using System.Collections.Generic;
 namespace Decentraverse.ViewModels
 {
     public class CardCarouselViewModel : Screen
@@ -26,11 +26,17 @@ namespace Decentraverse.ViewModels
             RefreshCards(null, null);
         }
 
-        private void RefreshCards(object sender, EventArgs args)
-        {
-            view.Children.Clear();
-            CardViews.Clear();
 
+        private void DoRefreshOnBackgroundThread()
+        {
+            var cards = repo.GetMyCards();
+
+            Device.BeginInvokeOnMainThread(()=>{
+                OnMainThread(cards);
+            });
+        }
+
+        private void OnMainThread(IEnumerable<Card> cards){
             foreach (var card in repo.GetMyCards())
             {
                 CardView cardView = new CardView
@@ -66,6 +72,19 @@ namespace Decentraverse.ViewModels
                     }
                 }
             });
+           
+        }
+
+        private void RefreshCards(object sender, EventArgs args)
+        {
+            view.Children.Clear();
+            CardViews.Clear();
+
+            System.Threading.Thread newThread = new System.Threading.Thread(DoRefreshOnBackgroundThread);
+            newThread.IsBackground = true;
+            newThread.Start();
+
+
         }
     }
 }

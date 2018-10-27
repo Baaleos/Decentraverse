@@ -1,133 +1,143 @@
 ﻿using System;
 using System.Threading.Tasks;
+using MathNet.Numerics;
 using SkiaSharp;
 using SkiaSharp.Views.Forms;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace Decentraverse.Views
-{
-    public partial class Starfield : ContentPage
-    {
-        public struct Star
-        {
-            public float X;
-            public float Y;
-            public Vec2 Target;
-            public float Size => Math.Abs(XNormalised);
+namespace Decentraverse.Views {
+    public partial class Starfield : ContentPage {
+        public class Star {
+            public double X;
+            public double Y;
+            public double InitialX;
+            public double InitialY;
+            public double SizeMultiplier;
+            public double Slope;
+            public double Intercept;
 
-            public float XNormalised => X - (float)(DeviceDisplay.ScreenMetrics.Width / 2);
-            public float YNormalised => Y - (float)(DeviceDisplay.ScreenMetrics.Height / 2);
-        }
+            public Vec2 Coords => new Vec2(X, Y);
+            public double YSloped => (X * Slope) + Intercept;
+            public void SetSlopeIntercept(double intercept, double slope) {
+                Slope = slope;
+                Intercept = intercept;
+            }
 
-        public enum Direction {
-            TOPLEFT,
-            TOPRIGHT,
-            BOTTOMLEFT,
-            BOTTOMRIGHT
+            public void SetSlopeIntercept(Tuple<double, double> slopeIntercept) {
+                SetSlopeIntercept(slopeIntercept.Item1, slopeIntercept.Item2);
+            }
+
+            public double CalculatedSize(Vec2 origin) {
+                return CurrentSize = Distance.Manhattan(new[] {Coords.X, Coords.Y}, new[] {origin.X, origin.Y}) /
+                    (DeviceDisplay.ScreenMetrics.Density * 10) * SizeMultiplier;
+            }
+            public double CurrentSize { get; private set; }
+
+            public Star() {
+                X = InitialX;
+                Y = InitialY;
+            }
         }
 
         public static string PATH => "Starfield";
-        private Star[] stars = new Star[60];
+        private Star[] stars = new Star[8];
         private bool pageIsActive;
         private Random random = new Random();
+        private Vec2 Origin;
+        private double frameTime = 1.0 / 30;
 
-        private double CentreX;
-        private double CentreY;
-
-        public Starfield()
-        {
+        public Starfield() {
             InitializeComponent();
         }
 
-        protected override void OnAppearing()
-        {
+        protected override async void OnAppearing() {
             base.OnAppearing();
             pageIsActive = true;
-            CentreX = DeviceDisplay.ScreenMetrics.Width / 2;
-            CentreY = DeviceDisplay.ScreenMetrics.Height / 2;
+            Origin = new Vec2(DeviceDisplay.ScreenMetrics.Width / 2, DeviceDisplay.ScreenMetrics.Height / 2);
             GenerateStarField();
-            AnimationLoop();
+//            new Task(() => {  }).Start();
+            await AnimationLoop();
         }
 
-        protected override void OnDisappearing()
-        {
+        protected override void OnDisappearing() {
             base.OnDisappearing();
             pageIsActive = false;
         }
 
-        private void OnPainting(object sender, SKPaintSurfaceEventArgs e)
-        {
+        private void OnPainting(object sender, SKPaintSurfaceEventArgs e) {
             var surface = e.Surface;
             var canvas = surface.Canvas;
+            canvas.Clear(SKColors.Black);
 
-            using (var circleFill = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.BlueViolet })
-            using (var circleBorder = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Stroke, Color = SKColors.Gray, StrokeWidth = 5 })
-            foreach (var star in stars)
-            {
-                canvas.Clear(SKColors.Black);
-                canvas.DrawCircle(star.X, star.Y, star.Size, circleFill);
-                canvas.DrawCircle(star.X, star.Y, star.Size, circleBorder);
+            using(var circleFill = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Fill, Color = SKColors.White })
+            using(var circleBorder = new SKPaint { IsAntialias = true, Style = SKPaintStyle.Stroke, Color = SKColors.Gray, StrokeWidth = 5 })
+            foreach(var star in stars) {    
+                if (star == null)
+                    continue;
+                canvas.DrawRect((float)star.X, (float)star.Y, (float)star.CalculatedSize(Origin), (float)star.CalculatedSize(Origin), circleFill);
+                canvas.DrawRect((float)star.X, (float)star.Y, (float)star.CalculatedSize(Origin), (float)star.CalculatedSize(Origin), circleBorder);
             }
         }
 
-        async Task AnimationLoop()
-        {
-            while (pageIsActive)
-            {
+        private async Task AnimationLoop() {
+            while (pageIsActive) {
+                MoveStarField(frameTime);
                 canvasView.InvalidateSurface();
-
-                await Task.Delay(TimeSpan.FromSeconds(1.0 / 60));
+                //await Task.Delay(TimeSpan.FromSeconds(frameTime));
             }
         }
 
-        private void GenerateStarField()
-        {
-            for (int i = 0; i < stars.Length; i++)
-            {
-                var xCoord = random.NextDouble() % DeviceDisplay.ScreenMetrics.Width;
-                var yCoord = random.NextDouble() % DeviceDisplay.ScreenMetrics.Height;
-
-                stars[i] = new Star
-                {
-                    X = (float)xCoord,
-                    Y = (float)yCoord
-                };
-
-                Vec2 target = new Vec2();
-
-                if (stars[i].XNormalised > 0)
-                {
-                    // Right of screen
-                    target.X = random.NextDouble() % CentreX;
-                }
-                else
-                {
-                    target.X = -random.NextDouble() % CentreX;
-                    // Left of screen
-                }
-
-                if (stars[i].YNormalised > 0)
-                {
-                    // Bottom of screen
-                    target.Y = random.NextDouble() % CentreY;
-                }
-                else
-                {
-                    // Top of screen
-                    target.Y = -random.NextDouble() % CentreY;
-                }
-
-                stars[i].Target = target;
+        private void GenerateStarField() {
+            for(int i = 0; i < stars.Length; i++) {
+                stars[i] = new Star();
+                ConfigureStar(stars[i]);
             }
         }
 
-        private void MoveStarField()
-        {
-            foreach(var star in stars)
-            {
+        private void ConfigureStar(Star star) {
+            var xCoord = random.Next((int)DeviceDisplay.ScreenMetrics.Width);
+            var yCoord = random.Next((int)DeviceDisplay.ScreenMetrics.Height);
 
+            star.InitialX = xCoord;
+            star.InitialY = yCoord;
+            star.SizeMultiplier = random.NextDouble();
+            star.X = xCoord;
+            star.Y = yCoord;
+
+            var slopeIntercept = Fit.Line(new[] {Origin.X, xCoord}, new[] {Origin.Y, yCoord});
+            star.SetSlopeIntercept(slopeIntercept);
+        }
+
+        private void MoveStarField(double frameTime) {
+//            while(pageIsActive)
+                foreach(var star in stars) {
+                    if(star == null)
+                        continue;
+                    MoveStar(star, frameTime);
+                }
+        }
+
+        private void MoveStar(Star star, double frameTime) {
+            if (star.X < (0 - star.CurrentSize) ||
+                star.Y < (0 - star.CurrentSize) ||
+                star.X > (DeviceDisplay.ScreenMetrics.Width + star.CurrentSize) ||
+                star.Y > (DeviceDisplay.ScreenMetrics.Height + star.CurrentSize)) {
+                ConfigureStar(star);
+            }
+
+            if (star.InitialX <= Origin.X) {
+                // Top left
+                star.X -= Math.Abs(1 / star.Slope) * star.CurrentSize;// * 10 * frameTime;
+                star.Y =  star.YSloped;
+            } else if (star.InitialX > Origin.X) {
+                // Top right
+                star.X += Math.Abs(1 / star.Slope) * star.CurrentSize;// * 10 * frameTime;
+                star.Y =  star.YSloped;
             }
         }
+
+        private double interpolate(double p1, double p2, double fraction)
+            => p1 + (p2 - p1) * fraction;
     }
 }

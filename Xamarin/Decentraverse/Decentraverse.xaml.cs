@@ -32,6 +32,7 @@ namespace Decentraverse
             {
                 URL = "https://ropsten.infura.io"
             };
+
             containerRegistry.RegisterInstance(ethereumResolver);
             containerRegistry.Register<IDecentralisedFilesystemService, IPFSFileSystem>();
             containerRegistry.Register<ISolidityService, SolidityService>();

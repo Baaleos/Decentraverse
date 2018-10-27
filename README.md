@@ -11,3 +11,7 @@ Addresses:
 	
 	
 	0x2fe2432C494Af6c5aaaC18C87504934a8905B8b7
+
+
+Video used in Hackathon local judging presentation - stored on IPFS
+QmZX38dKx2z4bHXqKKPwUsQCLVXWLUcVipdHNgiA9Avzey

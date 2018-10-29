@@ -108,11 +108,5 @@ namespace Decentraverse.Views
             //await SolidityService.SafeTransferFromMe(address, Card.Token);
             //await PopupNavigation.Instance.RemovePageAsync(popup);
         }
-
-        private async void OnPurchaseButton(object sender, EventArgs args)
-        {
-            //await SolidityService.PurchaseCardForMyself(SolidityService.MyAddress);
-            //await DisplayAlert("Gratz", "Bought! Refresh to see.", "Yay!");
-        }
     }
 }

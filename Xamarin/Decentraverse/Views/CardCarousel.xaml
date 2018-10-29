@@ -5,8 +5,10 @@
                 xmlns:views="clr-namespace:Decentraverse.Views;assembly=Decentraverse"
                 xmlns:carouselLayout="clr-namespace:CarouselView.Controls.CarouselLayout;assembly=CarouselView"
                 x:Class="Decentraverse.Views.CardCarousel"
-                Padding="10"
-                ItemsSource="{Binding Cards}">
+                xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                prism:ViewModelLocator.AutowireViewModel="True"
+                ItemsSource="{Binding Cards}"
+                Padding="10" >
     <carouselLayout:CarouselLayout.ItemTemplate>
         <DataTemplate>
             <views:CardView Card="{Binding}" />

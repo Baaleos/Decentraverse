@@ -4,7 +4,9 @@ using Decentraverse.ViewModels;
 using Decentraverse.Views;
 using Prism;
 using Prism.Ioc;
+using Xamarin.Forms.Xaml;
 
+[assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace Decentraverse
 {
     public partial class Decentraverse
@@ -13,10 +15,10 @@ namespace Decentraverse
         { }
         public Decentraverse(IPlatformInitializer platformInitializer = null) : base(platformInitializer) { }
 
-        protected override void OnInitialized()
+        protected override async void OnInitialized()
         {
             InitializeComponent();
-            NavigationService.NavigateAsync(CardCarousel.PATH);
+            await NavigationService.NavigateAsync(CardCarouselContainer.PATH);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -36,7 +38,8 @@ namespace Decentraverse
             containerRegistry.Register<ISolidityService, SolidityService>();
             containerRegistry.Register<ICardRepository, EthereumCardRepository>();
 
-            containerRegistry.RegisterForNavigation<CardCarouselContainer>(CardCarousel.PATH);
+            containerRegistry.RegisterForNavigation<CardCarouselContainer, CardCarouselContainerViewModel>(CardCarouselContainer.PATH);
+//            containerRegistry.RegisterForNavigation<CardCarousel, CardCarouselViewModel>(CardCarousel.PATH);
             containerRegistry.RegisterForNavigation<CardView, CardViewModel>();
             containerRegistry.RegisterForNavigation<StartPage, StartPageViewModel>(StartPage.PATH);
         }

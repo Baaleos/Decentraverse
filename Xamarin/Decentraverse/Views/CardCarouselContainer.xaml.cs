@@ -8,17 +8,11 @@ namespace Decentraverse.Views
 {
     public partial class CardCarouselContainer : ContentPage
     {
+        public static string PATH => "CardCarouselContainer";
+
         public CardCarouselContainer()
         {
             InitializeComponent();
-            var assembly = typeof(CardCarouselContainer).GetTypeInfo().Assembly;
-            Stream stream = assembly.GetManifestResourceStream("Decentraverse.Effects.starfield.html");
-
-            using (var reader = new StreamReader(stream))
-                Starfield.Source = new HtmlWebViewSource
-                {
-                    Html = reader.ReadToEnd(),
-                };
         }
     }
 }

@@ -9,16 +9,15 @@ using Xamarin.Forms;
 
 namespace Decentraverse.ViewModels
 {
-    public class CardCarouselViewModel : BindableBase
+    public class CardCarouselViewModel
     {
-        CardCarousel view;
+//        public ObservableCollection<Card> Cards {
+//            get => _cards;
+//            private set => SetProperty(ref _cards, value);
+//        }
+        public ObservableCollection<Card> Cards = new ObservableCollection<Card>();
 
-        public ObservableCollection<Card> Cards {
-            get => _cards;
-            private set => SetProperty(ref _cards, value);
-        }
-
-        private ObservableCollection<Card> _cards = new ObservableCollection<Card>();
+//        private ObservableCollection<Card> _cards = new ObservableCollection<Card>();
         private ICardRepository repo;
 
         public CardCarouselViewModel(ICardRepository cardRepository)

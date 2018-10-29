@@ -7,7 +7,7 @@ namespace Decentraverse.ViewModels
 {
     public class StartPageViewModel
     {
-        public DelegateCommand Start { get; protected set; }
+        private DelegateCommand Start { get; set; }
         private INavigationService navigationService;
 
         public StartPageViewModel(INavigationService navigationService)

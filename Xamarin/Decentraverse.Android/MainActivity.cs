@@ -1,16 +1,16 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Decentraverse.Contracts;
+using Decentraverse.Droid.Services;
 using Prism;
 using Prism.Ioc;
 
 namespace Decentraverse.Droid
 {
     [Activity(Label = "Decentraverse", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
-    {
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
+    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity {
+        protected override void OnCreate(Bundle savedInstanceState) {
             base.OnCreate(savedInstanceState);
             //Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
@@ -32,11 +32,9 @@ namespace Decentraverse.Droid
         //}
     }
 
-    public class AndroidInitializer : IPlatformInitializer
-    {
-        public void RegisterTypes(IContainerRegistry containerRegistry)
-        {
-
+    public class AndroidInitializer : IPlatformInitializer {
+        public void RegisterTypes(IContainerRegistry containerRegistry) {
+            containerRegistry.Register<IToastService, AndroidToastService>();
         }
     }
 }

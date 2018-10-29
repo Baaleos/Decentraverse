@@ -14,6 +14,7 @@ namespace Decentraverse.Contracts
         IEnumerable<int> GetCardTokenIds();
         Task<string> GetOwnerOf(int tokenId);
         Task PurchaseCard(string senderAddress);
+        Task PurchaseCardForMyself();
         Task SafeTransferFrom(string fromAddress, string toAddress, int tokenId);
         Task SafeTransferFromMe(string toAddress, int tokenId);
     }
